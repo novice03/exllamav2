@@ -7,7 +7,8 @@ class ExLlamaV2Config:
     debug_mode = False
     model_dir: str = None                       # Directory containing model files
 
-    max_seq_len: int = 2048                     # Maximum sequence length. Sequences longer than this will throw an exception
+    #max_seq_len: int = 2048                     # Maximum sequence length. Sequences longer than this will throw an exception
+    max_seq_len: int = 4096
     max_batch_size: int = 1                     # Maximum size of batches to process
     max_input_len: int = 2048                   # Maximum length of input IDs in a single forward pass. Sequences longer than this will be processed in multiple steps
     max_attention_size: int = 2048 ** 2         # Sequences will be processed in chunks to keep the size of the attention weights matrix <= this

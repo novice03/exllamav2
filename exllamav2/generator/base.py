@@ -63,7 +63,7 @@ class ExLlamaV2BaseGenerator:
         # Tokenize input and produce padding mask if needed
 
         batch_size = 1 if isinstance(prompt, str) else len(prompt)
-        ids = self.tokenizer.encode(prompt, encode_special_tokens = encode_special_tokens)
+        ids = self.tokenizer.encode(prompt, encode_special_tokens = encode_special_tokens, add_bos = True)
 
         overflow = ids.shape[-1] + num_tokens - self.model.config.max_seq_len
         if overflow > 0: ids = ids[:, overflow:]
