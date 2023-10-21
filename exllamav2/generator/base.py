@@ -65,6 +65,8 @@ class ExLlamaV2BaseGenerator:
         batch_size = 1 if isinstance(prompt, str) else len(prompt)
         ids = self.tokenizer.encode(prompt, encode_special_tokens = encode_special_tokens, add_bos = True)
 
+        num_tokens = self.model.config.max_seq_len - ids.shape[-1]
+
         overflow = ids.shape[-1] + num_tokens - self.model.config.max_seq_len
         if overflow > 0: ids = ids[:, overflow:]
 
